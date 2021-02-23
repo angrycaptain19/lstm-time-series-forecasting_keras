@@ -77,7 +77,7 @@ def NormalizeMult(data):
 
     normalize = normalize.reshape(data.shape[1],2)
     print(normalize.shape)
-    for i in range(0,data.shape[1]):
+    for i in range(data.shape[1]):
         #第i列
         list = data[:,i]
         listlow,listhigh =  np.percentile(list, [0, 100])
@@ -87,7 +87,7 @@ def NormalizeMult(data):
         delta = listhigh - listlow
         if delta != 0:
             #第j行
-            for j in range(0,data.shape[0]):
+            for j in range(data.shape[0]):
                 data[j,i]  =  (data[j,i] - listlow)/delta
     #np.save("./normalize.npy",normalize)
     return  data,normalize
