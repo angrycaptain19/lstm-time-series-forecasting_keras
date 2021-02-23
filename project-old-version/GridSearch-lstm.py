@@ -13,24 +13,20 @@ from  lstm.Predict_Interface import  PredictWithModel
 import  csv
 
 def GetRMSE(y_hat,y_test):
-    sum = np.sqrt(metrics.mean_squared_error(y_test, y_hat))
-    return  sum
+    return np.sqrt(metrics.mean_squared_error(y_test, y_hat))
 
 def GetMAE(y_hat,y_test):
-    sum = metrics.mean_absolute_error(y_test, y_hat)
-    return  sum
+    return metrics.mean_absolute_error(y_test, y_hat)
 
 def GetMAPE(y_hat,y_test):
-    sum = np.mean(np.abs((y_hat - y_test) / y_test)) * 100
-    return sum
+    return np.mean(np.abs((y_hat - y_test) / y_test)) * 100
 
 def GetMAPE_Order(y_hat,y_test):
     #删除y_test 为0元素
     zero_index = np.where(y_test == 0)
     y_hat = np.delete(y_hat,zero_index[0])
     y_test = np.delete(y_test,zero_index[0])
-    sum = np.mean(np.abs((y_hat - y_test) / y_test)) * 100
-    return sum
+    return np.mean(np.abs((y_hat - y_test) / y_test)) * 100
 
 config = Config()
 layer_grid = [32,48,64,80,96,112]

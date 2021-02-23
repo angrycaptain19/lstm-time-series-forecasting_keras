@@ -36,14 +36,14 @@ def FNormalize_MultSteps(data, norm):
 # 使用训练数据的归一化
 def NormalizeMultUseData(data, normalize):
     data = np.array(data)
-    for i in range(0, data.shape[1]):
+    for i in range(data.shape[1]):
         # 第i列
         listlow = normalize[i, 0]
         listhigh = normalize[i, 1]
         delta = listhigh - listlow
         if delta != 0:
             # 第j行
-            for j in range(0, data.shape[0]):
+            for j in range(data.shape[0]):
                 data[j, i] = (data[j, i] - listlow) / delta
     return data
 

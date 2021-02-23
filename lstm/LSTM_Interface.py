@@ -21,7 +21,7 @@ def create_dataset(dataset, n_predictions):
 #多维归一化
 def Normalize_Mult(data):
     normalize = np.zeros((data.shape[1],2),dtype='float64')
-    for i in range(0,data.shape[1]):
+    for i in range(data.shape[1]):
         #第i列
         list = data[:,i]
         listlow,listhigh =  np.percentile(list, [0, 100])
@@ -30,7 +30,7 @@ def Normalize_Mult(data):
         delta = listhigh - listlow
         if delta != 0:
             #第j行
-            for j in range(0,data.shape[0]):
+            for j in range(data.shape[0]):
                 data[j,i]  =  (data[j,i] - listlow)/delta
     return  data,normalize
 
